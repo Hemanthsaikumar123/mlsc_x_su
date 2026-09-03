@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -277,10 +278,12 @@ function LeadershipCard({ person, featured = false }) {
       >
 
         {person.image ? (
-          <img
+          <Image
             src={person.image}
             alt={person.name}
-            className={`h-full w-full object-cover ${person.imagePosition || 'object-center'}`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className={`object-cover ${person.imagePosition || 'object-center'}`}
           />
         ) : (
           <div className="flex h-full items-center justify-center">
@@ -345,10 +348,12 @@ function DomainCard({ domain }) {
             <div className="flex gap-4">
               <ProfileTooltip person={domain.lead} domainName={domain.domain}>
                 <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
-                  <img
+                  <Image
                     src={domain.lead.image}
                     alt={domain.lead.name}
-                    className={`h-full w-full object-cover ${domain.lead.imagePosition || 'object-center'}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className={`object-cover ${domain.lead.imagePosition || 'object-center'}`}
                   />
                 </div>
               </ProfileTooltip>
@@ -370,10 +375,12 @@ function DomainCard({ domain }) {
                 <div key={idx} className="flex gap-4">
                   <ProfileTooltip person={coLead} domainName={domain.domain}>
                     <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
-                      <img
+                      <Image
                         src={coLead.image}
                         alt={coLead.name}
-                        className={`h-full w-full object-cover ${coLead.imagePosition || 'object-center'}`}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className={`object-cover ${coLead.imagePosition || 'object-center'}`}
                       />
                     </div>
                   </ProfileTooltip>
@@ -408,9 +415,11 @@ function PersonRow({ person, label }) {
       <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-[#071a32]">
 
         {person.image ? (
-          <img
+          <Image
             src={person.image}
             alt={person.name}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="h-full w-full object-cover"
           />
         ) : (

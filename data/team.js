@@ -170,7 +170,7 @@ export const team2025 = {
     {
       id: 8,
       domain: "UI/UX",
-      lead: null,
+      lead: { name: "Abburi Pramchand", role: "Lead", image: "/Team/2025-2026/Domain_wise/Ui-Ux/lead/Abburi Pramchand.jpeg" },
       coLeads: [
         { name: "K.Vedashree", role: "Co-Lead", image: "/Team/2025-2026/Domain_wise/Ui-Ux/co-lead/K.Vedashree - UI-UX Co-Lead.jpeg" },
         { name: "Sk Md Mehboob Nawaz", role: "Co-Lead", image: "/Team/2025-2026/Domain_wise/Ui-Ux/co-lead/Sk Md Mehboob Nawaz - UIUX co-lead.jpeg" },

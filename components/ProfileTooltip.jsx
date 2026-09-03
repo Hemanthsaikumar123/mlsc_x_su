@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Maximize, Minimize } from "lucide-react";
 
 const domainDescriptions = {
@@ -106,11 +107,13 @@ export default function ProfileTooltip({ children, person, domainName }) {
             />
             
             <div className="relative z-10">
-              <div className="aspect-square w-full overflow-hidden rounded-xl bg-[#071a32]">
-                <img
+              <div className="relative aspect-square overflow-hidden rounded-xl bg-[#071a32]">
+                <Image
                   src={person.image}
                   alt={person.name}
-                  className={`h-full w-full object-cover ${person.imagePosition || 'object-center'}`}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className={`object-cover ${person.imagePosition || 'object-center'}`}
                 />
               </div>
 
