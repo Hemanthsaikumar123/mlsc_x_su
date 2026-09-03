@@ -12,9 +12,12 @@
     "framer-motion": "^13.1.1",
     "lucide-react": "^1.37.0",
     "next": "16.3.3",
+    "next-sanity": "^13.3.4",
     "ogl": "^1.0.11",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "sanity": "^6.12.0",
+    "styled-components": "^6.5.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   Users,
   ShieldCheck,
+  ChevronDown
 } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
@@ -83,26 +84,20 @@ export default function TeamPage() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              <button 
-                onClick={() => setActiveYear("2025-2026")}
-                className={`rounded-full border px-5 py-2 text-[11px] font-semibold tracking-wider transition ${
-                  activeYear === "2025-2026" 
-                    ? "border-[#1688F5]/40 bg-[#0875E1]/15 text-[#50BFFF]" 
-                    : "border-white/[0.08] bg-white/[0.02] text-white/30 hover:text-white/70 hover:bg-white/[0.05]"
-                }`}
-              >
-                2025 - 2026
-              </button>
-              <button 
-                onClick={() => setActiveYear("2024-2025")}
-                className={`rounded-full border px-5 py-2 text-[11px] font-semibold tracking-wider transition ${
-                  activeYear === "2024-2025" 
-                    ? "border-[#1688F5]/40 bg-[#0875E1]/15 text-[#50BFFF]" 
-                    : "border-white/[0.08] bg-white/[0.02] text-white/30 hover:text-white/70 hover:bg-white/[0.05]"
-                }`}
-              >
-                2024 - 2025
-              </button>
+              <div className="relative">
+                <select
+                  value={activeYear}
+                  onChange={(e) => setActiveYear(e.target.value)}
+                  className="appearance-none rounded-full border border-[#1688F5]/40 bg-[#0875E1]/15 py-2.5 pl-5 pr-10 text-[11px] font-semibold tracking-wider text-[#50BFFF] outline-none transition hover:bg-[#0875E1]/20 cursor-pointer"
+                >
+                  <option value="2025-2026" className="bg-[#061326] text-white">2025 - 2026</option>
+                  <option value="2024-2025" className="bg-[#061326] text-white">2024 - 2025</option>
+                </select>
+                <ChevronDown 
+                  size={14} 
+                  className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#50BFFF]"
+                />
+              </div>
             </div>
 
           </motion.div>
