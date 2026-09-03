@@ -12,15 +12,20 @@ import {
 import Navbar from "@/components/Navbar";
 import MLSCBackground from "@/components/MLSCBackground";
 import ShinyText from "@/components/ShinyText";
+import ProfileTooltip from "@/components/ProfileTooltip";
 
+import { useState } from "react";
 import {
-  leadership,
-  domainLeads,
+  team2024,
+  team2025
 } from "@/data/team";
 
 export default function TeamPage() {
+  const [activeYear, setActiveYear] = useState("2025-2026");
+  const activeTeamData = activeYear === "2025-2026" ? team2025 : team2024;
+  
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#020817] text-white">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#020817] text-white">
 
       <MLSCBackground />
 
@@ -78,10 +83,24 @@ export default function TeamPage() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              <button className="rounded-full border border-[#1688F5]/40 bg-[#0875E1]/15 px-5 py-2 text-[11px] font-semibold tracking-wider text-[#50BFFF] transition">
+              <button 
+                onClick={() => setActiveYear("2025-2026")}
+                className={`rounded-full border px-5 py-2 text-[11px] font-semibold tracking-wider transition ${
+                  activeYear === "2025-2026" 
+                    ? "border-[#1688F5]/40 bg-[#0875E1]/15 text-[#50BFFF]" 
+                    : "border-white/[0.08] bg-white/[0.02] text-white/30 hover:text-white/70 hover:bg-white/[0.05]"
+                }`}
+              >
                 2025 - 2026
               </button>
-              <button className="rounded-full border border-white/[0.08] bg-white/[0.02] px-5 py-2 text-[11px] font-semibold tracking-wider text-white/30 transition hover:text-white/70 hover:bg-white/[0.05]">
+              <button 
+                onClick={() => setActiveYear("2024-2025")}
+                className={`rounded-full border px-5 py-2 text-[11px] font-semibold tracking-wider transition ${
+                  activeYear === "2024-2025" 
+                    ? "border-[#1688F5]/40 bg-[#0875E1]/15 text-[#50BFFF]" 
+                    : "border-white/[0.08] bg-white/[0.02] text-white/30 hover:text-white/70 hover:bg-white/[0.05]"
+                }`}
+              >
                 2024 - 2025
               </button>
             </div>
@@ -107,7 +126,7 @@ export default function TeamPage() {
             <div className="mt-10 flex justify-center">
 
               <LeadershipCard
-                person={leadership.facultyCoordinator}
+                person={activeTeamData.leadership.facultyCoordinator}
                 featured
               />
 
@@ -128,32 +147,46 @@ export default function TeamPage() {
 
             <SectionHeading
               number="02"
-              title="Leadership"
+              title="Chairs"
             />
 
-            {/* Chair */}
-            <div className="mt-10 flex justify-center">
-
-              <LeadershipCard
-                person={leadership.chair}
-                featured
-              />
-
+            {/* Chairs */}
+            <div className="mt-10 flex flex-wrap justify-center gap-5">
+              {activeTeamData.leadership.chairs.map((chair, index) => (
+                <LeadershipCard
+                  key={index}
+                  person={chair}
+                  featured
+                />
+              ))}
             </div>
 
+          </div>
 
-            {/* Connecting line */}
-            <div className="mx-auto h-14 w-px bg-gradient-to-b from-[#1688F5]/40 to-white/[0.05]" />
+        </section>
 
+        {/* =========================================
+            VICE CHAIRS
+        ========================================= */}
+
+        <section className="border-t border-white/[0.06]">
+
+          <div className="mx-auto max-w-5xl px-5 py-24 md:px-8">
+
+            <SectionHeading
+              number="03"
+              title="Vice Chairs"
+            />
 
             {/* Vice Chairs */}
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
 
-              {leadership.viceChairs.map(
+              {activeTeamData.leadership.viceChairs.map(
                 (person, index) => (
                   <LeadershipCard
                     key={index}
                     person={person}
+                    featured
                   />
                 )
               )}
@@ -171,34 +204,20 @@ export default function TeamPage() {
 
         <section className="border-y border-white/[0.06] bg-[#030b19]/40">
 
-          <div className="mx-auto max-w-7xl px-5 py-28 md:px-8">
-
+          <div className="mx-auto max-w-5xl px-5 py-24 md:px-8">
             <SectionHeading
-              number="03"
-              title="Domain Leadership"
+              number="04"
+              title="Domains"
             />
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-white/35">
-              Each domain is driven by student leaders who
-              create learning experiences, projects and
-              opportunities for the community.
-            </p>
-
-
-            <div className="mt-14 space-y-5">
-
-              {domainLeads.map(
-                (domain, index) => (
-                  <DomainTeam
-                    key={domain.id}
-                    domain={domain}
-                    index={index}
-                  />
-                )
-              )}
-
+            <div className="mt-16 flex flex-col gap-8 md:gap-12">
+              {activeTeamData.domainLeads.map((domain) => (
+                <DomainCard
+                  key={domain.id}
+                  domain={domain}
+                />
+              ))}
             </div>
-
           </div>
 
         </section>
@@ -266,7 +285,7 @@ function LeadershipCard({ person, featured = false }) {
           <img
             src={person.image}
             alt={person.name}
-            className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+            className={`h-full w-full object-cover ${person.imagePosition || 'object-center'}`}
           />
         ) : (
           <div className="flex h-full items-center justify-center">
@@ -312,62 +331,73 @@ function LeadershipCard({ person, featured = false }) {
 
 
 /* =====================================================
-   DOMAIN TEAM
+   DOMAIN CARD
 ===================================================== */
 
-function DomainTeam({ domain, index }) {
+function DomainCard({ domain }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.04,
-      }}
-      className="rounded-3xl border border-white/[0.07] bg-[#061326]/50 p-5 backdrop-blur-xl md:p-6"
-    >
+    <div className="group relative z-10 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 transition hover:z-50 hover:border-[#1688F5]/30 md:p-8">
+      {/* Background glow */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1688F5]/0 via-transparent to-[#50BFFF]/0 opacity-0 transition duration-500 group-hover:from-[#1688F5]/10 group-hover:opacity-100" />
 
-      {/* Domain heading */}
+      <div className="relative z-10">
+        <h3 className="text-xl font-bold tracking-tight text-white md:text-2xl">
+          {domain.domain}
+        </h3>
 
-      <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
+          {domain.lead && (
+            <div className="flex gap-4">
+              <ProfileTooltip person={domain.lead} domainName={domain.domain}>
+                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
+                  <img
+                    src={domain.lead.image}
+                    alt={domain.lead.name}
+                    className={`h-full w-full object-cover ${domain.lead.imagePosition || 'object-center'}`}
+                  />
+                </div>
+              </ProfileTooltip>
 
-        <div>
+              <div className="flex flex-col justify-center">
+                <p className="text-sm font-bold text-white md:text-base">
+                  {domain.lead.name}
+                </p>
+                <p className="mt-1 text-xs text-[#50BFFF]">
+                  {domain.lead.role}
+                </p>
+              </div>
+            </div>
+          )}
 
-          <p className="text-[9px] tracking-[0.25em] text-white/20">
-            DOMAIN {String(index + 1).padStart(2, "0")}
-          </p>
+          {domain.coLeads && domain.coLeads.length > 0 && (
+            <div className="flex flex-col gap-4">
+              {domain.coLeads.map((coLead, idx) => (
+                <div key={idx} className="flex gap-4">
+                  <ProfileTooltip person={coLead} domainName={domain.domain}>
+                    <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
+                      <img
+                        src={coLead.image}
+                        alt={coLead.name}
+                        className={`h-full w-full object-cover ${coLead.imagePosition || 'object-center'}`}
+                      />
+                    </div>
+                  </ProfileTooltip>
 
-          <h3 className="mt-2 text-xl font-semibold tracking-tight">
-            {domain.domain}
-          </h3>
-
+                  <div className="flex flex-col justify-center">
+                    <p className="text-sm font-bold text-white md:text-base">
+                      {coLead.name}
+                    </p>
+                    <p className="mt-1 text-xs text-white/50">
+                      {coLead.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-
-        <span className="w-fit rounded-full border border-[#1688F5]/20 bg-[#0875E1]/10 px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-[#50BFFF]">
-          Domain Team
-        </span>
-
       </div>
-
-
-      {/* People */}
-
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-
-        <PersonRow
-          person={domain.lead}
-          label="Lead"
-        />
-
-        <PersonRow
-          person={domain.coLead}
-          label="Co-Lead"
-        />
-
-      </div>
-
-    </motion.div>
+    </div>
   );
 }
 
