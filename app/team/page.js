@@ -77,6 +77,15 @@ export default function TeamPage() {
               together.
             </p>
 
+            <div className="mt-10 flex flex-wrap gap-3">
+              <button className="rounded-full border border-[#1688F5]/40 bg-[#0875E1]/15 px-5 py-2 text-[11px] font-semibold tracking-wider text-[#50BFFF] transition">
+                2025 - 2026
+              </button>
+              <button className="rounded-full border border-white/[0.08] bg-white/[0.02] px-5 py-2 text-[11px] font-semibold tracking-wider text-white/30 transition hover:text-white/70 hover:bg-white/[0.05]">
+                2024 - 2025
+              </button>
+            </div>
+
           </motion.div>
 
         </section>

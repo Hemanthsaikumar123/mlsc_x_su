@@ -22,6 +22,7 @@ import {
 import Navbar from "@/components/Navbar";
 import MLSCBackground from "@/components/MLSCBackground";
 import ShinyText from "@/components/ShinyText";
+import CountUp from "@/components/CountUp";
 
 const domains = [
   {
@@ -258,10 +259,10 @@ export default function AboutPage() {
 
             <div className="mt-12 grid grid-cols-2 gap-y-12 md:grid-cols-4">
 
-              <Impact number="500+" label="Students" />
-              <Impact number="25+" label="Events" />
-              <Impact number="10+" label="Projects" />
-              <Impact number="7" label="Domains" />
+              <Impact number={500} suffix="+" label="Students" />
+              <Impact number={25} suffix="+" label="Events" />
+              <Impact number={10} suffix="+" label="Projects" />
+              <Impact number={7} suffix="" label="Domains" />
 
             </div>
           </div>
@@ -332,11 +333,11 @@ function LearningCard({ number, icon, title, text }) {
   );
 }
 
-function Impact({ number, label }) {
+function Impact({ number, suffix = "", label }) {
   return (
     <div>
       <div className="text-4xl font-bold tracking-tight text-white md:text-5xl">
-        {number}
+        <CountUp to={number} duration={2} />{suffix}
       </div>
 
       <p className="mt-2 text-[9px] uppercase tracking-[0.25em] text-white/25">

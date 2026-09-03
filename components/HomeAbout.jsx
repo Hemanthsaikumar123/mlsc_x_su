@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import CountUp from "@/components/CountUp";
 
 export default function HomeAbout() {
   return (
@@ -59,10 +60,10 @@ export default function HomeAbout() {
         {/* Stats */}
         <div className="mt-20 grid grid-cols-2 border-y border-white/[0.07] py-8 md:grid-cols-4">
 
-          <Stat number="500+" label="Students" />
-          <Stat number="25+" label="Events" />
-          <Stat number="7" label="Domains" />
-          <Stat number="∞" label="Possibilities" />
+          <Stat number={500} suffix="+" label="Students" />
+          <Stat number={25} suffix="+" label="Events" />
+          <Stat number={7} suffix="" label="Domains" />
+          <Stat number="∞" suffix="" label="Possibilities" />
 
         </div>
 
@@ -71,12 +72,17 @@ export default function HomeAbout() {
   );
 }
 
-function Stat({ number, label }) {
+function Stat({ number, suffix = "", label }) {
   return (
     <div className="border-white/[0.07] py-3 md:border-r md:px-8 first:md:pl-0 last:md:border-r-0">
-      <p className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-        {number}
-      </p>
+      <div className="text-3xl font-bold tracking-tight text-white md:text-4xl flex items-center">
+        {typeof number === "number" ? (
+          <CountUp to={number} duration={2} />
+        ) : (
+          number
+        )}
+        {suffix}
+      </div>
 
       <p className="mt-2 text-[9px] uppercase tracking-[0.25em] text-white/25">
         {label}

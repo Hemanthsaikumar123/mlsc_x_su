@@ -8,6 +8,7 @@ import {
   Users,
   Sparkles,
 } from "lucide-react";
+import CountUp from "@/components/CountUp";
 
 export default function AboutSection() {
   return (
@@ -139,22 +140,26 @@ export default function AboutSection() {
           <div className="grid grid-cols-2 gap-y-10 md:grid-cols-4 md:gap-y-0">
 
             <Stat
-              number="500+"
+              number={500}
+              suffix="+"
               label="Students"
             />
 
             <Stat
-              number="25+"
+              number={25}
+              suffix="+"
               label="Events"
             />
 
             <Stat
-              number="10+"
+              number={10}
+              suffix="+"
               label="Projects"
             />
 
             <Stat
-              number="4+"
+              number={4}
+              suffix="+"
               label="Tech Domains"
             />
 
@@ -229,12 +234,12 @@ function InfoCard({
    STAT
 ====================================================== */
 
-function Stat({ number, label }) {
+function Stat({ number, suffix = "", label }) {
   return (
     <div className="group">
 
       <div className="text-3xl font-bold tracking-tight text-white transition-colors group-hover:text-[#50BFFF] md:text-4xl">
-        {number}
+        <CountUp to={number} duration={2} />{suffix}
       </div>
 
       <div className="mt-2 text-[9px] font-medium uppercase tracking-[0.25em] text-white/30">

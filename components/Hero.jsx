@@ -77,19 +77,6 @@ export default function Hero() {
 
             </motion.div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="mt-14 flex max-w-lg border-t border-white/[0.08] pt-6"
-            >
-              <Stat number="500+" label="Students" />
-              <Divider />
-              <Stat number="25+" label="Events" />
-              <Divider />
-              <Stat number="10+" label="Projects" />
-            </motion.div>
           </div>
 
           {/* RIGHT */}
