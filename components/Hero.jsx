@@ -76,17 +76,6 @@ export default function Hero() {
                 />
               </a>
 
-              <a
-                href="#membership"
-                className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-white/80 backdrop-blur-md transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
-              >
-                Join the Community
-
-                <ArrowUpRight
-                  size={15}
-                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </a>
             </motion.div>
 
             {/* Stats */}

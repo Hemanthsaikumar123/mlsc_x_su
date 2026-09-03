@@ -178,17 +178,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA */}
-          <a
-            href="#membership"
-            className="group hidden items-center gap-2 rounded-full bg-[#0875E1] px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_0_25px_rgba(8,117,225,0.25)] transition-all hover:bg-[#1688F5] hover:shadow-[0_0_35px_rgba(8,117,225,0.4)] md:flex"
-          >
-            Join MLSC
-            <ArrowUpRight
-              size={15}
-              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </a>
+
 
           {/* Mobile toggle */}
           <button
@@ -233,14 +223,7 @@ export default function Navbar() {
                 </a>
               ))}
 
-              <a
-                href="#membership"
-                onClick={() => setOpen(false)}
-                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#0875E1] px-4 py-3 text-center text-sm font-semibold text-white"
-              >
-                Join MLSC
-                <ArrowUpRight size={15} />
-              </a>
+
             </motion.div>
           )}
         </AnimatePresence>

@@ -9,8 +9,6 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import MLSCBackground from "@/components/MLSCBackground";
 
 import { story } from "@/data/story";
@@ -20,8 +18,6 @@ export default function OurStoryPage() {
     <main className="relative min-h-screen overflow-hidden bg-[#020817] text-white">
 
       <MLSCBackground />
-
-      <Navbar />
 
       <div className="relative z-10">
 
@@ -200,15 +196,11 @@ export default function OurStoryPage() {
 
               <ArrowUpRight size={16} />
             </Link>
-
           </div>
 
         </section>
 
       </div>
-
-      <Footer />
-
     </main>
   );
 }

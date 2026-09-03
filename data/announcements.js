@@ -6,13 +6,7 @@ export const announcements = [
       "Stay tuned for the next MLSC × SU community experience.",
     href: "/events",
   },
-  {
-    type: "Community",
-    title: "Membership applications will open soon.",
-    description:
-      "Join the community and start your MLSC journey.",
-    href: "/about",
-  },
+
   {
     type: "Update",
     title: "Follow MLSC × SU for the latest updates.",
