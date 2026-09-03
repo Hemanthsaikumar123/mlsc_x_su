@@ -142,7 +142,7 @@ export default function OurStoryPage() {
               <p className="mt-7 max-w-2xl text-base leading-8 text-white/40">
                 MLSC × SU isn't defined only by its past.
                 Every workshop, project, event and student who
-                joins the community becomes part of what comes next.
+                participates in the community becomes part of what comes next.
               </p>
 
               <Link

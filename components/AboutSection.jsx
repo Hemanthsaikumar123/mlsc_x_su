@@ -78,10 +78,10 @@ export default function AboutSection() {
           </p>
 
           <a
-            href="#journey"
+            href="/ourstory"
             className="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-white/70 transition hover:text-white"
           >
-            Discover our journey
+            Discover our story
 
             <ArrowUpRight
               size={16}

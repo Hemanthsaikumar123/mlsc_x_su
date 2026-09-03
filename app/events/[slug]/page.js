@@ -159,7 +159,7 @@ export default async function EventPage({ params }) {
             </h2>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/40">
-              Join fellow students, explore new ideas and
+              Meet fellow students, explore new ideas and
               gain practical experience through this MLSC
               community experience.
             </p>

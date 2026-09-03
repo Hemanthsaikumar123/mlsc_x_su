@@ -268,33 +268,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="mx-auto max-w-7xl px-5 py-32 text-center md:px-8">
 
-          <Rocket
-            className="mx-auto text-[#50BFFF]"
-            size={26}
-          />
-
-          <h2 className="mx-auto mt-7 max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">
-            Your journey starts
-            <span className="text-[#50BFFF]"> here.</span>
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/35">
-            Find your interests, meet your people and start
-            building with MLSC × SU.
-          </p>
-
-          <Link
-            href="/journey"
-            className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#0875E1] px-6 py-3.5 text-sm font-semibold transition hover:bg-[#1688F5]"
-          >
-            Explore the MLSC Journey
-            <ArrowRight size={16} />
-          </Link>
-
-        </section>
 
       </div>
     </main>

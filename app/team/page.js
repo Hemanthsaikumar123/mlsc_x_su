@@ -196,38 +196,7 @@ export default function TeamPage() {
         </section>
 
 
-        {/* =========================================
-            CTA
-        ========================================= */}
 
-        <section className="mx-auto max-w-4xl px-5 py-32 text-center">
-
-          <ShieldCheck
-            size={26}
-            className="mx-auto text-[#50BFFF]"
-          />
-
-          <h2 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl">
-            Everyone has a role
-            <br />
-            in the community.
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-white/35">
-            You don't have to start as a leader. Start by
-            learning, contributing and building with us.
-          </p>
-
-          <Link
-            href="/journey"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#0875E1] px-6 py-3.5 text-sm font-semibold transition hover:bg-[#1688F5]"
-          >
-            Explore Your Journey
-
-            <ArrowUpRight size={16} />
-          </Link>
-
-        </section>
 
       </div>
 
