@@ -1,34 +1,48 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import ShinyText from "@/components/ShinyText";
 import Lightfall from "@/components/Lightfall";
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden bg-[#020817]"
     >
-      <div className="absolute inset-0 z-0">
-        <Lightfall
-          colors={['#1688F5', '#50BFFF', '#08264a']}
-          backgroundColor="#020817"
-          speed={1}
-          streakCount={6}
-          streakWidth={1.5}
-          streakLength={1.5}
-          glow={1}
-          density={0.3}
-          twinkle={1.5}
-          zoom={2.5}
-          backgroundGlow={0.7}
-          opacity={0.8}
-          mouseInteraction={true}
-          mouseStrength={1.2}
-          mouseRadius={0.7}
-        />
+      <div className="absolute inset-0 z-0 hidden md:block">
+        {!isMobile && (
+          <Lightfall
+            colors={['#1688F5', '#50BFFF', '#08264a']}
+            backgroundColor="#020817"
+            speed={1}
+            streakCount={6}
+            streakWidth={1.5}
+            streakLength={1.5}
+            glow={1}
+            density={0.3}
+            twinkle={1.5}
+            zoom={2.5}
+            backgroundGlow={0.7}
+            opacity={0.8}
+            mouseInteraction={true}
+            mouseStrength={1.2}
+            mouseRadius={0.7}
+          />
+        )}
       </div>
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 pt-36 md:px-8 md:pt-40">
 
