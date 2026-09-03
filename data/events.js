@@ -17,6 +17,13 @@ export const events = [
     registrationLink: "#",
 
     featured: true,
+
+    gallery: [
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1475721025871-87c536416629?w=800&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&auto=format&fit=crop&q=60"
+    ]
   },
 
   // ...

@@ -167,6 +167,29 @@ export default async function EventPage({ params }) {
 
         </div>
 
+        {/* Gallery */}
+        {event.gallery && event.gallery.length > 0 && (
+          <div className="mt-16 border-t border-white/[0.07] pt-16">
+            <div className="mb-8">
+              <h2 className="text-3xl font-semibold tracking-tight">Event Gallery</h2>
+              <p className="mt-2 text-sm text-white/40">Glimpses from the event.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {event.gallery.map((photo, idx) => (
+                <div key={idx} className="group relative aspect-square overflow-hidden rounded-2xl bg-white/5">
+                  <img
+                    src={photo}
+                    alt={`${event.title} gallery image ${idx + 1}`}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
     </main>
   );
