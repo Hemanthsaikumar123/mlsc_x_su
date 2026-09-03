@@ -9,6 +9,7 @@ import { events } from "@/data/events";
 import EventCard from "@/components/EventCard";
 import MLSCBackground from "@/components/MLSCBackground";
 import Navbar from "@/components/Navbar";
+import ShinyText from "@/components/ShinyText";
 
 const filters = [
   "All",
@@ -74,9 +75,7 @@ export default function EventsPage() {
             Learn.
             <br />
 
-            <span className="bg-gradient-to-r from-white via-[#9DDEFF] to-[#1688F5] bg-clip-text text-transparent">
-              Experience.
-            </span>
+            <ShinyText text="Experience." />
           </h1>
 
           <p className="mt-7 max-w-2xl text-base leading-8 text-white/40 md:text-lg">

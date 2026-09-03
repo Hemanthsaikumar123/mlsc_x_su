@@ -21,6 +21,7 @@ import {
 
 import Navbar from "@/components/Navbar";
 import MLSCBackground from "@/components/MLSCBackground";
+import ShinyText from "@/components/ShinyText";
 
 const domains = [
   {
@@ -92,9 +93,7 @@ export default function AboutPage() {
               More than a club.
               <br />
 
-              <span className="bg-gradient-to-r from-white via-[#9DDEFF] to-[#1688F5] bg-clip-text text-transparent">
-                A community.
-              </span>
+              <ShinyText text="A community." />
             </h1>
 
             <p className="mt-8 max-w-2xl text-base leading-8 text-white/40 md:text-lg">

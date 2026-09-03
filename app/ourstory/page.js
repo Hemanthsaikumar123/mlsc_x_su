@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import MLSCBackground from "@/components/MLSCBackground";
+import ShinyText from "@/components/ShinyText";
 
 import { story } from "@/data/story";
 
@@ -60,9 +61,7 @@ export default function OurStoryPage() {
               From an idea
               <br />
 
-              <span className="bg-gradient-to-r from-white via-[#9DDEFF] to-[#1688F5] bg-clip-text text-transparent">
-                to a community.
-              </span>
+              <ShinyText text="to a community." />
 
             </h1>
 
@@ -159,43 +158,6 @@ export default function OurStoryPage() {
 
             </div>
 
-          </div>
-
-        </section>
-
-
-        {/* =========================================
-            FUTURE
-        ========================================= */}
-
-        <section className="border-y border-white/[0.06] bg-[#030b19]/40">
-
-          <div className="mx-auto max-w-5xl px-5 py-28 text-center md:px-8">
-
-            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#50BFFF]">
-              What's next?
-            </p>
-
-            <h2 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
-              The next chapter
-              <br />
-              belongs to <span className="text-[#50BFFF]">you.</span>
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/35">
-              Communities grow when new people bring new ideas.
-              Maybe your contribution becomes part of the next
-              chapter of MLSC × SU.
-            </p>
-
-            <Link
-              href="/events"
-              className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#0875E1] px-6 py-3.5 text-sm font-semibold transition hover:bg-[#1688F5]"
-            >
-              Be Part of the Story
-
-              <ArrowUpRight size={16} />
-            </Link>
           </div>
 
         </section>

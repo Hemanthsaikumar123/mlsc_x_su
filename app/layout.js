@@ -32,6 +32,7 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MLSCBackground from "@/components/MLSCBackground";
+import ClickSpark from "@/components/ClickSpark";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -68,16 +69,24 @@ export default function RootLayout({ children }) {
         className="relative min-h-screen bg-[#020817] text-white antialiased"
         style={{ fontFamily: "var(--font-body)" }}
       >
-        {/* Shared ambient background */}
-        <div className="pointer-events-none fixed inset-0 -z-10">
-          <MLSCBackground />
-        </div>
+        <ClickSpark
+          sparkColor="#1652b5"
+          sparkSize={19}
+          sparkRadius={50}
+          sparkCount={8}
+          duration={400}
+        >
+          {/* Shared ambient background */}
+          <div className="pointer-events-none fixed inset-0 -z-10">
+            <MLSCBackground />
+          </div>
 
-        <Navbar />
+          <Navbar />
 
-        <div className="relative">{children}</div>
+          <div className="relative">{children}</div>
 
-        <Footer />
+          <Footer />
+        </ClickSpark>
       </body>
     </html>
   );

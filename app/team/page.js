@@ -11,6 +11,7 @@ import {
 
 import Navbar from "@/components/Navbar";
 import MLSCBackground from "@/components/MLSCBackground";
+import ShinyText from "@/components/ShinyText";
 
 import {
   leadership,
@@ -66,9 +67,7 @@ export default function TeamPage() {
               Meet the
               <br />
 
-              <span className="bg-gradient-to-r from-white via-[#9DDEFF] to-[#1688F5] bg-clip-text text-transparent">
-                team behind MLSC.
-              </span>
+              <ShinyText text="team behind MLSC." />
 
             </h1>
 

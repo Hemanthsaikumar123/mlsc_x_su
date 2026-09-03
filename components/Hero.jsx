@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
+import ShinyText from "@/components/ShinyText";
 
 export default function Hero() {
   return (
@@ -38,9 +39,7 @@ export default function Hero() {
               Learn.
               <br />
 
-              <span className="bg-gradient-to-r from-white via-[#9DDEFF] to-[#1688F5] bg-clip-text text-transparent">
-                Build.
-              </span>
+              <ShinyText text="Build." />
 
               <br />
 
