@@ -56,7 +56,7 @@ import Hero from "@/components/Hero";
 import Announcements from "@/components/Announcements";
 import HomeAbout from "@/components/HomeAbout";
 import Testimonials from "@/components/Testimonials";
-import MembershipCTA from "@/components/MembershipCTA";
+// import MembershipCTA from "@/components/MembershipCTA";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -74,7 +74,7 @@ export default function Home() {
         <Announcements />
         <HomeAbout />
         <Testimonials />
-        <MembershipCTA />
+        {/* <MembershipCTA /> */}
       </div>
     </main>
   );

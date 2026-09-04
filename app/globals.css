@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --mlsc-background: #020817;
@@ -42,4 +42,73 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
+} */
+
+
+
+
+@import "tailwindcss";
+
+:root {
+  --mlsc-background: #05070c;
+  --mlsc-surface: #0b1424;
+  --mlsc-blue: #3e7bfa;
+  --mlsc-cyan: #49d6e8;
+  --mlsc-amber: #ffb86b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--mlsc-background);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(73, 214, 232, 0.3);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mlsc-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* visible keyboard focus, kept in the brand accent rather than the
+   browser default so it doesn't clash with the dark theme */
+:focus-visible {
+  outline: 2px solid var(--mlsc-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
