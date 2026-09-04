@@ -347,7 +347,7 @@ function DomainCard({ domain }) {
           {domain.lead && (
             <div className="flex gap-4">
               <ProfileTooltip person={domain.lead} domainName={domain.domain}>
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
                   <Image
                     src={domain.lead.image}
                     alt={domain.lead.name}
@@ -374,7 +374,7 @@ function DomainCard({ domain }) {
               {domain.coLeads.map((coLead, idx) => (
                 <div key={idx} className="flex gap-4">
                   <ProfileTooltip person={coLead} domainName={domain.domain}>
-                    <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
+                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/5 ring-2 ring-white/10 md:h-16 md:w-16">
                       <Image
                         src={coLead.image}
                         alt={coLead.name}

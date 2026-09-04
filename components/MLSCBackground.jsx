@@ -170,6 +170,7 @@
 
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 /**
@@ -182,19 +183,34 @@ import { motion } from "framer-motion";
  * finance dashboard. One bold move (the ribbon), everything else disciplined.
  */
 export default function MLSCBackground() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {/* Base */}
       <div className="absolute inset-0 bg-[#050810]" />
 
-      {/* Signature: the aurora ribbon */}
-      <AuroraRibbon />
+      {!isMobile && (
+        <>
+          {/* Signature: the aurora ribbon */}
+          <AuroraRibbon />
 
-      {/* Circuit trace linework */}
-      <CircuitTraces />
+          {/* Circuit trace linework */}
+          <CircuitTraces />
 
-      {/* Fine grain so the dark surface never looks like a flat export */}
-      <Grain />
+          {/* Fine grain so the dark surface never looks like a flat export */}
+          <Grain />
+        </>
+      )}
 
       {/* Edge vignette to pull focus back to content */}
       <div
