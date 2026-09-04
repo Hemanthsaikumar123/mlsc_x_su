@@ -7,7 +7,7 @@ const links = [
   { name: "About", href: "/about" },
   { name: "Events", href: "/events" },
   { name: "Team", href: "/team" },
-  { name: "Journey", href: "/journey" },
+  { name: "Our Story", href: "/ourstory" },
 ];
 
 export default function Footer() {
