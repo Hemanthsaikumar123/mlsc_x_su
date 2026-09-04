@@ -145,7 +145,7 @@ export default function Navbar() {
               <img
                 src="/images/mlsc-su-logo.png"
                 alt="MLSC × SU"
-                className="h-full w-full object-contain drop-shadow-[0_0_14px_rgba(8,117,225,0.35)]"
+                className="h-full w-full object-contain drop-shadow-[0_0_8px_rgba(80,191,255,0.7)] drop-shadow-[0_0_16px_rgba(8,117,225,0.4)]"
               />
             </div>
 

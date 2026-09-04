@@ -28,17 +28,17 @@ export default function Hero() {
           <Lightfall
             colors={['#1688F5', '#50BFFF', '#08264a']}
             backgroundColor="#020817"
-            speed={1}
+            speed={0.6}
             streakCount={6}
             streakWidth={1.5}
             streakLength={1.5}
             glow={1}
-            density={0.3}
+            density={0.2}
             twinkle={1.5}
             zoom={2.5}
             backgroundGlow={0.7}
             opacity={0.8}
-            mouseInteraction={true}
+            mouseInteraction={false}
             mouseStrength={1.2}
             mouseRadius={0.7}
           />
@@ -153,6 +153,67 @@ function Divider() {
   );
 }
 
+function LogoImage() {
+  return (
+    <motion.div
+      className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+      animate={{ y: [-6, 6, -6] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+    >
+      <div className="relative flex items-center justify-center">
+        {/* Core electric cyan backlight bloom */}
+        <div
+          className="pointer-events-none absolute -inset-6 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(80,191,255,0.45) 0%, rgba(22,136,245,0.3) 45%, rgba(8,38,74,0.12) 70%, transparent 80%)",
+            filter: "blur(32px)",
+          }}
+        />
+
+        {/* Ambient deep blue aura with breathing pulse */}
+        <motion.div
+          className="pointer-events-none absolute -inset-14 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(22,136,245,0.32) 0%, rgba(8,117,225,0.16) 50%, transparent 75%)",
+            filter: "blur(48px)",
+          }}
+          animate={{ scale: [0.92, 1.08, 0.92], opacity: [0.75, 1, 0.75] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Vertical light streak accent matching background lightfall */}
+        <div
+          className="pointer-events-none absolute -bottom-16 -top-16 w-[2px] opacity-70"
+          style={{
+            background:
+              "linear-gradient(180deg, transparent, rgba(80,191,255,0.85) 50%, transparent)",
+            filter: "blur(1.5px)",
+            boxShadow: "0 0 16px rgba(80,191,255,0.9)",
+          }}
+        />
+
+        {/* Shield Logo with vibrant electric cyan & azure rim highlights matching background */}
+        <motion.img
+          src="/images/mlsc-su-logo.png"
+          alt="Microsoft Learn Student Ambassador - Siddhartha University"
+          className="relative h-[290px] w-auto object-contain md:h-[340px]"
+          style={{
+            filter: `
+              drop-shadow(0 0 10px rgba(80, 191, 255, 0.95))
+              drop-shadow(0 0 26px rgba(22, 136, 245, 0.85))
+              drop-shadow(0 0 52px rgba(8, 117, 225, 0.55))
+              drop-shadow(0 25px 45px rgba(0, 0, 0, 0.75))
+            `,
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 function LogoVisual() {
   return (
     <motion.div
@@ -167,11 +228,11 @@ function LogoVisual() {
     >
       {/* Main aura */}
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(8,117,225,0.22), transparent 68%)",
-          filter: "blur(35px)",
+            "radial-gradient(circle, rgba(22,136,245,0.28) 0%, rgba(8,117,225,0.12) 50%, transparent 70%)",
+          filter: "blur(40px)",
         }}
         animate={{
           scale: [0.9, 1.1, 0.9],
@@ -184,54 +245,18 @@ function LogoVisual() {
         }}
       />
 
-      {/* Outer ring */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#1688F5]/10"
-        animate={{
-          rotate: 360,
-        }}
-        transition={{
-          duration: 35,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+      {/* Outer ring with cyan glow accent */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#1688F5]/25 shadow-[0_0_25px_rgba(22,136,245,0.18)]"
       />
 
       {/* Dashed ring */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/[0.08]"
-        animate={{
-          rotate: -360,
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#50BFFF]/25"
       />
 
       {/* Logo */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
-        animate={{
-          y: [-5, 5, -5],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="relative">
-          <div className="absolute inset-0 rounded-[35px] bg-[#0875E1]/30 blur-3xl" />
-
-          <img
-            src="/images/mlsc-su-logo.png"
-            alt="Microsoft Learn Student Ambassador - Siddhartha University"
-            className="relative h-[290px] w-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.45)] md:h-[340px]"
-          />
-        </div>
-      </motion.div>
+      <LogoImage />
 
       {/* Floating technology labels */}
       <TechTag
@@ -249,14 +274,14 @@ function LogoVisual() {
       />
 
       <TechTag
-        text="WEB"
+        text="WEB DEVELOPMENT"
         icon="⌁"
         className="bottom-24 left-5"
         delay={2}
       />
 
       <TechTag
-        text="OPEN SOURCE"
+        text="COMPETITIVE PROGRAMMING"
         icon="◈"
         className="bottom-12 right-0"
         delay={3}
@@ -273,7 +298,7 @@ function LogoVisual() {
 function TechTag({ text, icon, className, delay }) {
   return (
     <motion.div
-      className={`absolute z-20 flex items-center gap-2 rounded-full border border-white/[0.08] bg-[#06152a]/80 px-3 py-2 text-[8px] font-semibold tracking-[0.18em] text-white/45 shadow-lg backdrop-blur-xl ${className}`}
+      className={`absolute z-20 flex items-center gap-2 rounded-full border border-[#50BFFF]/20 bg-[#06152a]/85 px-3 py-2 text-[8px] font-semibold tracking-[0.18em] text-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_12px_rgba(80,191,255,0.15)] backdrop-blur-xl ${className}`}
       animate={{
         y: [-5, 5, -5],
       }}
@@ -284,7 +309,7 @@ function TechTag({ text, icon, className, delay }) {
         ease: "easeInOut",
       }}
     >
-      <span className="text-[#50BFFF]">{icon}</span>
+      <span className="text-[#50BFFF] drop-shadow-[0_0_8px_#50BFFF]">{icon}</span>
       {text}
     </motion.div>
   );
