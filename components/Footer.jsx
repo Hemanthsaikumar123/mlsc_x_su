@@ -27,7 +27,7 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="mt-5 max-w-sm text-sm leading-6 text-white/30">
+            <p className="mt-5 max-w-sm text-sm leading-6 text-white/75">
               Microsoft Learn Student Community at
               Siddhartha University — learning, building
               and growing together.
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-white/25">
+            <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-white/75">
               Explore
             </p>
 
@@ -45,7 +45,7 @@ export default function Footer() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm text-white/40 transition hover:text-white"
+                  className="text-sm text-white/70 transition hover:text-white"
                 >
                   {link.name}
                 </Link>
@@ -58,7 +58,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-14 flex flex-col gap-5 border-t border-white/[0.06] pt-6 sm:flex-row sm:items-center sm:justify-between">
 
-          <p className="text-[10px] text-white/20">
+          <p className="text-[10px] text-white/70">
             © {new Date().getFullYear()} MLSC × SU. All rights reserved.
           </p>
 
@@ -66,8 +66,8 @@ export default function Footer() {
 
             {/* Replace these hrefs with official chapter links */}
             <a
-              href="#"
-              className="group flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] text-white/25 transition hover:text-white"
+              href="https://www.linkedin.com/in/mlsc-vrsec-bb13272b1/"
+              className="group flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] text-white/75 transition hover:text-white"
             >
               LinkedIn
               <ArrowUpRight
@@ -77,8 +77,8 @@ export default function Footer() {
             </a>
 
             <a
-              href="#"
-              className="group flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] text-white/25 transition hover:text-white"
+              href="https://www.instagram.com/mlsc_vrsec?igsi=MTdobjh1dGlhcDVzZw=="
+              className="group flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] text-white/75 transition hover:text-white"
             >
               Instagram
               <ArrowUpRight
@@ -87,16 +87,16 @@ export default function Footer() {
               />
             </a>
 
-            <a
+            {/* <a
               href="#"
-              className="group flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] text-white/25 transition hover:text-white"
+              className="group flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] text-white/75 transition hover:text-white"
             >
               GitHub
               <ArrowUpRight
                 size={11}
                 className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
-            </a>
+            </a> */}
 
           </div>
 

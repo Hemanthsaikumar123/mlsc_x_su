@@ -6,13 +6,11 @@ import { testimonials } from "@/data/testimonials";
 
 export default function Testimonials() {
   return (
-    <section className="relative overflow-hidden bg-[#020817] py-24 md:py-32">
-
+    <section className="relative overflow-hidden py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-
         <div className="mb-12 flex items-end justify-between">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#50BFFF]">
+            <p className="text-sm font-medium text-[#49D6E8]">
               From the community
             </p>
 
@@ -23,24 +21,16 @@ export default function Testimonials() {
         </div>
 
         <div className="flex gap-5 overflow-x-auto pb-5 snap-x snap-mandatory scrollbar-none">
-
           {testimonials.map((item, index) => (
             <motion.article
               key={index}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.08,
-              }}
-              className="min-w-[85%] snap-center rounded-3xl border border-white/[0.07] bg-[#061326]/50 p-7 backdrop-blur-xl md:min-w-[420px] md:p-9"
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              className="min-w-[85%] snap-center rounded-3xl border border-white/[0.07] bg-[#0b1424]/50 p-7 backdrop-blur-xl md:min-w-[420px] md:p-9"
             >
-
-              <Quote
-                size={22}
-                className="text-[#1688F5]"
-              />
+              <Quote size={22} className="text-[#3E7BFA]" />
 
               <p className="mt-8 text-base leading-8 text-white/55">
                 "{item.quote}"
@@ -50,17 +40,11 @@ export default function Testimonials() {
                 <p className="text-sm font-medium text-white/75">
                   {item.name}
                 </p>
-
-                <p className="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/25">
-                  {item.role}
-                </p>
+                <p className="mt-1 text-[11px] text-white/25">{item.role}</p>
               </div>
-
             </motion.article>
           ))}
-
         </div>
-
       </div>
     </section>
   );

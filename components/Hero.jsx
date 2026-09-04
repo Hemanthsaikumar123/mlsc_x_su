@@ -1,7 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { domains } from "@/data/domains";
+
+// const domains = [
+//   "Competitive Programming",
+//   "Web",
+//   "Cloud",
+//   "Advanced Tech",
+//   "Marketing",
+//   "Digital Creation",
+//   "AI",
+// ];
 
 export default function Hero() {
   return (
@@ -10,25 +21,23 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden"
     >
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 pt-36 md:px-8 md:pt-40">
-
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           {/* LEFT */}
           <div>
-
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.15, duration: 0.7 }}
               className="mb-7 flex items-center gap-3"
             >
-              <span className="h-px w-9 bg-[#1688F5]" />
+              <span className="h-px w-9 bg-[#3E7BFA]" />
 
-              <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[#50BFFF]">
-                Microsoft Learn Student Community
+              <span className="text-[11px] font-medium tracking-[0.1em] text-[#49D6E8]">
+                Microsoft Learn Student Community · Siddhartha University
               </span>
             </motion.div>
 
+            {/* HEADING */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -47,100 +56,60 @@ export default function Hero() {
               Innovate.
             </motion.h1>
 
+            {/* DESCRIPTION */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.8 }}
-              className="mt-8 max-w-xl text-base leading-7 text-white/50 md:text-lg"
+              className="mt-8 max-w-xl text-base leading-7 text-white/75 md:text-lg"
             >
-              A student-led technology community at Siddhartha
-              University, bringing curious minds together to learn,
-              build real-world projects and create meaningful impact.
+              A student-led technology community at Siddhartha University,
+              bringing curious minds together to learn, build real-world
+              projects and create meaningful impact.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.75, duration: 0.7 }}
-              className="mt-9 flex flex-wrap gap-4"
-            >
-              <a
-                href="#events"
-                className="group flex items-center gap-2 rounded-full bg-[#0875E1] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(8,117,225,0.2)] transition hover:bg-[#1688F5] hover:shadow-[0_0_40px_rgba(8,117,225,0.35)]"
-              >
-                Explore Events
+          
+            {/* CTA */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.8, duration: 0.7 }}
+  className="mt-9"
+>
+  <a
+    href="#events"
+    className="
+      group inline-flex items-center gap-4
+      border border-[#59C4F7]/60
+      bg-[#59C4F7]
+      px-6 py-3.5
+      text-[#02050B]
+      transition-all duration-300
+      hover:border-[#8DDEFF]
+      hover:bg-[#7AD4FA]
+    "
+  >
+    <span className="text-[11px] font-black uppercase tracking-[0.16em]">
+      Explore Events
+    </span>
 
-                <ArrowRight
-                  size={16}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </a>
-
-              <a
-                href="#membership"
-                className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-white/80 backdrop-blur-md transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
-              >
-                Join the Community
-
-                <ArrowUpRight
-                  size={15}
-                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </a>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="mt-14 flex max-w-lg border-t border-white/[0.08] pt-6"
-            >
-              <Stat number="500+" label="Students" />
-              <Divider />
-              <Stat number="25+" label="Events" />
-              <Divider />
-              <Stat number="10+" label="Projects" />
-            </motion.div>
+    <ArrowRight
+      size={16}
+      strokeWidth={2}
+      className="
+        transition-transform duration-300
+        group-hover:translate-x-1
+      "
+    />
+  </a>
+</motion.div>
           </div>
 
           {/* RIGHT */}
           <LogoVisual />
-
         </div>
       </div>
-
-      {/* Bottom hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-[9px] uppercase tracking-[0.35em] text-white/25 md:flex"
-      >
-        <span className="h-8 w-px bg-gradient-to-b from-transparent via-[#1688F5] to-transparent" />
-        Explore the community
-      </motion.div>
     </section>
-  );
-}
-
-function Stat({ number, label }) {
-  return (
-    <div className="min-w-[90px]">
-      <div className="text-xl font-semibold text-white">
-        {number}
-      </div>
-
-      <div className="mt-1 text-[9px] uppercase tracking-[0.22em] text-white/30">
-        {label}
-      </div>
-    </div>
-  );
-}
-
-function Divider() {
-  return (
-    <div className="mx-5 h-9 w-px bg-white/[0.08]" />
   );
 }
 
@@ -154,19 +123,19 @@ function LogoVisual() {
         duration: 1.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="relative mx-auto h-[470px] w-full max-w-[480px]"
+      className="relative mx-auto h-[470px] w-full max-w-[520px]"
     >
       {/* Main aura */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(8,117,225,0.22), transparent 68%)",
+            "radial-gradient(circle, rgba(62,123,250,0.20), transparent 68%)",
           filter: "blur(35px)",
         }}
         animate={{
-          scale: [0.9, 1.1, 0.9],
-          opacity: [0.6, 0.9, 0.6],
+          scale: [0.9, 1.08, 0.9],
+          opacity: [0.6, 0.85, 0.6],
         }}
         transition={{
           duration: 6,
@@ -177,10 +146,8 @@ function LogoVisual() {
 
       {/* Outer ring */}
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#1688F5]/10"
-        animate={{
-          rotate: 360,
-        }}
+        className="absolute left-1/2 top-1/2 h-[410px] w-[410px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#59C4F7]/10"
+        animate={{ rotate: 360 }}
         transition={{
           duration: 35,
           repeat: Infinity,
@@ -188,25 +155,81 @@ function LogoVisual() {
         }}
       />
 
-      {/* Dashed ring */}
+      {/* Inner dashed ring */}
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/[0.08]"
-        animate={{
-          rotate: -360,
-        }}
+        className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#59C4F7]/15"
+        animate={{ rotate: -360 }}
         transition={{
-          duration: 25,
+          duration: 28,
           repeat: Infinity,
           ease: "linear",
         }}
       />
 
+      {/* Connection lines */}
+      <DomainConnections />
+
+      {/* Domain labels */}
+      {/* 01 — Competitive Programming */}
+<DomainNode
+  text={domains[0].name}
+  className="left-[-10px] top-[58px] md:left-[-22px]"
+  delay={0.9}
+/>
+
+{/* 02 — Web */}
+<DomainNode
+  text={domains[1].name}
+  className="right-[12px] top-[78px] md:right-[8px]"
+  delay={1}
+/>
+
+{/* 03 — Cloud */}
+<DomainNode
+  text={domains[2].name}
+  className="right-[-8px] top-[205px] md:right-[-18px]"
+  delay={1.1}
+/>
+
+{/* 04 — Advanced Tech */}
+<DomainNode
+  text={domains[3].name}
+  className="right-[12px] bottom-[92px] md:right-[0px]"
+  delay={1.2}
+/>
+
+{/* 05 — Marketing */}
+<DomainNode
+  text={domains[4].name}
+  className="bottom-[25px] left-1/2 -translate-x-1/2"
+  delay={1.3}
+/>
+
+{/* 06 — Digital Creation */}
+<DomainNode
+  text={domains[5].name}
+  className="bottom-[88px] left-[5px] md:left-[-5px]"
+  delay={1.4}
+/>
+
+{/* 07 — AI */}
+<DomainNode
+  text={domains[6].name}
+  className="left-[-4px] top-[210px] md:left-[-14px]"
+  delay={1.5}
+/>
+
+{/* 08 — UI/UX */}
+<DomainNode
+  text={domains[7].name}
+  className="top-[25px] left-1/2 -translate-x-1/2"
+  delay={1.6}
+/>
+
       {/* Logo */}
       <motion.div
         className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
-        animate={{
-          y: [-5, 5, -5],
-        }}
+        animate={{ y: [-5, 5, -5] }}
         transition={{
           duration: 5,
           repeat: Infinity,
@@ -214,87 +237,123 @@ function LogoVisual() {
         }}
       >
         <div className="relative">
-          <div className="absolute inset-0 rounded-[35px] bg-[#0875E1]/30 blur-3xl" />
+          <div className="absolute inset-0 rounded-[35px] bg-[#3E7BFA]/20 blur-3xl" />
 
           <img
             src="/images/mlsc-su-logo.png"
-            alt="Microsoft Learn Student Ambassador - Siddhartha University"
-            className="relative h-[290px] w-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.45)] md:h-[340px]"
+            alt="Microsoft Learn Student Community - Siddhartha University"
+            className="relative h-[250px] w-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.45)] md:h-[320px]"
           />
         </div>
       </motion.div>
 
-      {/* Floating technology labels */}
-      <TechTag
-        text="AI / ML"
-        icon="✦"
-        className="left-0 top-16"
-        delay={0}
-      />
-
-      <TechTag
-        text="CLOUD"
-        icon="◇"
-        className="right-0 top-24"
-        delay={1}
-      />
-
-      <TechTag
-        text="WEB"
-        icon="⌁"
-        className="bottom-24 left-5"
-        delay={2}
-      />
-
-      <TechTag
-        text="OPEN SOURCE"
-        icon="◈"
-        className="bottom-12 right-0"
-        delay={3}
-      />
-
-      {/* Small sparkles */}
-      <Sparkle className="left-[20%] top-[35%]" delay={0} />
-      <Sparkle className="right-[18%] top-[42%]" delay={1.5} />
-      <Sparkle className="bottom-[25%] left-[35%]" delay={3} />
     </motion.div>
   );
 }
 
-function TechTag({ text, icon, className, delay }) {
+/* -------------------------------- */
+/* DOMAIN NODE                       */
+/* -------------------------------- */
+
+function DomainNode({ text, className, delay }) {
   return (
     <motion.div
-      className={`absolute z-20 flex items-center gap-2 rounded-full border border-white/[0.08] bg-[#06152a]/80 px-3 py-2 text-[8px] font-semibold tracking-[0.18em] text-white/45 shadow-lg backdrop-blur-xl ${className}`}
-      animate={{
-        y: [-5, 5, -5],
-      }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 4,
         delay,
-        repeat: Infinity,
-        ease: "easeInOut",
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
       }}
+      className={`absolute z-20 ${className}`}
     >
-      <span className="text-[#50BFFF]">{icon}</span>
-      {text}
+      <div className="flex items-center gap-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#59C4F7] shadow-[0_0_10px_rgba(89,196,247,0.5)]" />
+
+        <span className="whitespace-nowrap border border-white/[0.08] bg-[#071321]/75 px-3 py-1.5 text-[8px] font-semibold uppercase tracking-[0.12em] text-white/45 backdrop-blur-md md:text-[9px]">
+          {text}
+        </span>
+      </div>
     </motion.div>
   );
 }
 
-function Sparkle({ className, delay }) {
+/* -------------------------------- */
+/* CONNECTION NETWORK                */
+/* -------------------------------- */
+
+function DomainConnections() {
   return (
-    <motion.div
-      className={`absolute h-1 w-1 rounded-full bg-[#50BFFF] shadow-[0_0_12px_#50BFFF] ${className}`}
-      animate={{
-        opacity: [0.15, 1, 0.15],
-        scale: [0.7, 1.3, 0.7],
-      }}
-      transition={{
-        duration: 2.5,
-        delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
+    <svg
+      className="pointer-events-none absolute inset-0 z-[1] h-full w-full"
+      viewBox="0 0 520 470"
+      fill="none"
+      aria-hidden="true"
+    >
+      {/* left upper */}
+      <path
+        d="M70 90 L155 145"
+        stroke="#59C4F7"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+
+      {/* right upper */}
+      <path
+        d="M450 105 L365 145"
+        stroke="#59C4F7"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+
+      {/* right middle */}
+      <path
+        d="M470 235 L370 235"
+        stroke="#59C4F7"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+
+      {/* right lower */}
+      <path
+        d="M450 365 L360 315"
+        stroke="#59C4F7"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+
+      {/* bottom */}
+      <path
+        d="M260 430 L260 350"
+        stroke="#59C4F7"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+
+      {/* left lower */}
+      <path
+        d="M75 365 L155 315"
+        stroke="#59C4F7"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+
+      {/* left middle */}
+      <path
+        d="M55 235 L150 235"
+        stroke="#59C4F7"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+      />
+
+      {/* connection nodes */}
+      <circle cx="155" cy="145" r="2" fill="#59C4F7" fillOpacity="0.5" />
+      <circle cx="365" cy="145" r="2" fill="#59C4F7" fillOpacity="0.5" />
+      <circle cx="370" cy="235" r="2" fill="#59C4F7" fillOpacity="0.5" />
+      <circle cx="360" cy="315" r="2" fill="#59C4F7" fillOpacity="0.5" />
+      <circle cx="260" cy="350" r="2" fill="#59C4F7" fillOpacity="0.5" />
+      <circle cx="155" cy="315" r="2" fill="#59C4F7" fillOpacity="0.5" />
+      <circle cx="150" cy="235" r="2" fill="#59C4F7" fillOpacity="0.5" />
+    </svg>
   );
 }

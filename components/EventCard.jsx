@@ -1,123 +1,314 @@
 "use client";
 
-import { CalendarDays, MapPin, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowUpRight, MapPin, Clock } from "lucide-react";
 
-export default function EventCard({ event, index }) {
-  const formattedDate = new Date(event.date).toLocaleDateString(
-    "en-IN",
-    {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    }
-  );
+export default function EventCard({ event }) {
+  const date = new Date(event.date);
 
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.7,
-        delay: index * 0.08,
-      }}
-      whileHover={{ y: -6 }}
-      className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#061326]/55 backdrop-blur-xl"
+  const day = date.toLocaleDateString("en-IN", {
+    day: "2-digit",
+  });
+
+  const month = date.toLocaleDateString("en-IN", {
+    month: "short",
+  });
+
+  const year = date.toLocaleDateString("en-IN", {
+    year: "numeric",
+  });
+    
+  const cardContent = (
+    <div
+      className="
+        group relative block
+        overflow-hidden
+        border border-[#AEE5FF]
+        bg-[#59C4F7]
+        text-[#02050B]
+        transition-colors duration-300
+        hover:bg-[#64C9F8]
+      "
     >
-      {/* Image */}
-      <div className="relative h-56 overflow-hidden bg-[#071a32]">
+      {/* Inner frame */}
+        <div className="pointer-events-none absolute inset-[5px] border border-black" />
 
-        {event.image ? (
-          <img
-            src={event.image}
-            alt={event.title}
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center">
-            <span className="text-sm text-white/20">
-              MLSC Event
-            </span>
+        <div className="relative grid min-h-[225px] md:grid-cols-[150px_1fr_240px]">
+
+          {/* =====================================================
+              DATE BLOCK
+          ===================================================== */}
+          <div
+            className="
+              relative
+              flex
+              flex-row
+              items-center
+              gap-5
+              border-b
+              border-black/[0.12]
+              p-6
+              md:flex-col
+              md:items-start
+              md:justify-center
+              md:border-b-0
+              md:border-r
+              md:p-7
+            "
+          >
+            <div>
+              <div
+                className="
+                  text-[58px]
+                  font-black
+                  leading-[0.8]
+                  tracking-[-0.07em]
+                "
+              >
+                {day}
+              </div>
+
+              <div
+                className="
+                  mt-2
+                  text-[12px]
+                  font-black
+                  uppercase
+                  tracking-[0.2em]
+                "
+              >
+                {month}
+              </div>
+            </div>
+
+            <div
+              className="
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.2em]
+                text-black
+                md:mt-3
+              "
+            >
+              {year}
+            </div>
+
+            {/* Event index */}
+            {/* <div
+              className="
+                ml-auto
+                text-[9px]
+                font-bold
+                uppercase
+                tracking-[0.2em]
+                text-black/30
+                md:absolute
+                md:bottom-7
+                md:left-7
+              "
+            >
+              EVENT
+            </div> */}
           </div>
-        )}
 
-        {/* Image overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#061326] via-transparent to-transparent" />
+          {/* =====================================================
+              MAIN CONTENT
+          ===================================================== */}
+          <div className="flex flex-col justify-center p-6 md:p-8">
 
-        {/* Category */}
-        <div className="absolute left-5 top-5 rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/70 backdrop-blur-md">
-          {event.category}
-        </div>
+            {/* Category */}
+            <div className="flex items-center gap-2">
+              <span className="h-[5px] w-[5px] rounded-full bg-[#02050B]" />
 
-        {/* Status */}
-        <div className="absolute right-5 top-5 rounded-full bg-[#0875E1]/90 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.15em] text-white">
-          {event.status}
-        </div>
-      </div>
+              <span
+                className="
+                  text-[9px]
+                  font-black
+                  uppercase
+                  tracking-[0.28em]
+                  text-black/65
+                "
+              >
+                {event.category || "EVENT"}
+              </span>
+            </div>
 
-      {/* Content */}
-      <div className="p-6">
+            {/* Title */}
+            <h3
+              className="
+                mt-4
+                max-w-3xl
+                text-[30px]
+                font-black
+                uppercase
+                leading-[0.94]
+                tracking-[-0.045em]
+                md:text-[38px]
+                lg:text-[42px]
+              "
+            >
+              {event.title}
+            </h3>
 
-        <h3 className="text-xl font-semibold tracking-tight text-white">
-          {event.title}
-        </h3>
+            {/* Description */}
+            {event.description && (
+              <p
+                className="
+                  mt-4
+                  max-w-xl
+                  text-[13px]
+                  font-medium
+                  leading-5
+                  text-black/75
+                "
+              >
+                {event.description}
+              </p>
+            )}
 
-        <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/35">
-          {event.description}
-        </p>
-
-        {/* Details */}
-        <div className="mt-6 space-y-2.5">
-
-          <div className="flex items-center gap-2.5 text-xs text-white/35">
-            <CalendarDays
-              size={14}
-              className="text-[#50BFFF]"
-            />
-
-            {formattedDate} · {event.time}
+            {/* Tags */}
+            {event.tags?.length > 0 && (
+              <div className="mt-5 flex flex-wrap gap-1.5">
+                {event.tags.slice(0, 4).map((tag) => (
+                  <span
+                    key={tag}
+                    className="
+                      border
+                      border-black/20
+                      px-2.5
+                      py-1
+                      text-[8px]
+                      font-bold
+                      uppercase
+                      tracking-[0.13em]
+                      text-black/65
+                    "
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="flex items-center gap-2.5 text-xs text-white/35">
-            <MapPin
-              size={14}
-              className="text-[#50BFFF]"
-            />
+          {/* =====================================================
+              EVENT INFO / ACTION
+          ===================================================== */}
+          <div
+            className="
+              flex
+              flex-col
+              justify-between
+              border-t
+              border-black/[0.12]
+              p-6
+              md:border-l
+              md:border-t-0
+              md:p-7
+            "
+          >
+            {/* Status */}
+            <div className="flex items-center justify-between">
+              <span
+                className="
+                  text-[9px]
+                  font-black
+                  uppercase
+                  tracking-[0.22em]
+                  text-black
+                "
+              >
+                {event.status === "Upcoming"
+                  ? "Upcoming"
+                  : "Completed"}
+              </span>
 
-            {event.location}
+              <span className="text-[9px] font-bold text-black">
+                MLSC × SU
+              </span>
+            </div>
+
+            {/* Information */}
+            <div className="mt-7 space-y-3">
+
+              {event.time && (
+                <div className="flex items-start gap-3">
+                  <Clock
+                    size={14}
+                    strokeWidth={2}
+                    className="mt-0.5 shrink-0"
+                  />
+
+                  <span
+                    className="
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      leading-4
+                      tracking-[0.08em]
+                    "
+                  >
+                    {event.time}
+                  </span>
+                </div>
+              )}
+
+              {event.location && (
+                <div className="flex items-start gap-3">
+                  <MapPin
+                    size={14}
+                    strokeWidth={2}
+                    className="mt-0.5 shrink-0"
+                  />
+
+                  <span
+                    className="
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      leading-4
+                      tracking-[0.08em]
+                    "
+                  >
+                    {event.location}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Action */}
+            <div className="mt-7 flex items-center justify-between">
+              {event.status === "Upcoming" ? (
+                <>
+                  <span className="text-[10px] font-black uppercase tracking-[0.16em]">
+                    Explore Event
+                  </span>
+
+                  <span className="flex h-10 w-10 items-center justify-center border border-black/20 transition-colors duration-300 group-hover:bg-[#02050B] group-hover:text-[#59C4F7]">
+                    <ArrowUpRight size={17} strokeWidth={2} />
+                  </span>
+                </>
+              ) : (
+                <span className="text-[9px] font-black uppercase tracking-[0.18em] text-black">
+                  Event Archive
+                </span>
+              )}
+            </div>
           </div>
-
         </div>
-
-        {/* CTA */}
-        <div className="mt-7 flex items-center justify-between border-t border-white/[0.06] pt-5">
-
-        <Link
-        href={`/events/${event.slug}`}
-        className="flex items-center justify-between border-t border-white/[0.06] pt-5"
-        >
-        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25 transition-colors group-hover:text-[#50BFFF]">
-            View Event
-        </span>
-
-        <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all group-hover:border-[#1688F5]/40 group-hover:bg-[#0875E1]/10 group-hover:text-[#50BFFF]">
-            <ArrowUpRight size={15} />
-        </div>
+      {/* ...your existing card content... */}
+    </div>
+);
+  return event.status === "Upcoming" ? (
+      <article className="px-1 py-3 md:px-3 md:py-4">
+        <Link href={`/events/${event.slug}`}>
+          {cardContent}
         </Link>
-
-          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all group-hover:border-[#1688F5]/40 group-hover:bg-[#0875E1]/10 group-hover:text-[#50BFFF]">
-            <ArrowUpRight size={15} />
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* Bottom accent */}
-      <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#0078D4] to-[#50BFFF] transition-all duration-700 group-hover:w-full" />
-
-    </motion.article>
-  );
+      </article>
+    ) : (
+      <article className="px-1 py-3 md:px-3 md:py-4">
+        {cardContent}
+      </article>
+    );
 }
