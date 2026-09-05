@@ -488,7 +488,7 @@ export default function Hero() {
               className="mt-9"
             >
               <a
-                href="#events"
+                href="/events"
                 className="
                   group
                   inline-flex
