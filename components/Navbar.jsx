@@ -59,22 +59,25 @@ export default function Navbar() {
         <nav
           className="
             flex h-[70px] items-center justify-between
+            rounded-xl
             border border-white/[0.11]
             bg-[#081321]/90
-            px-4
+            px-3
             shadow-[0_8px_35px_rgba(0,0,0,0.22)]
             backdrop-blur-xl
+            sm:px-4
             md:px-6
           "
         >
 
-          {/* LOGO */}
+          {/* LOGO + BRAND */}
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-3"
+            className="flex items-center gap-2.5 sm:gap-3"
           >
-            <div className="flex h-11 w-11 items-center justify-center">
+            {/* LOGO */}
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center sm:h-11 sm:w-11">
               <img
                 src="/images/mlsc-su-logo.png"
                 alt="MLSC × SU"
@@ -82,27 +85,38 @@ export default function Navbar() {
               />
             </div>
 
+            {/* DIVIDER */}
             <div className="hidden h-7 w-px bg-white/[0.12] sm:block" />
 
-            <div className="hidden sm:block">
+            {/* BRAND TEXT */}
+            <div className="block">
               <p
                 className="
-                  text-[15px] font-bold
+                  text-[14px] font-bold
                   leading-tight tracking-[-0.02em]
                   text-white
+                  sm:text-[15px]
                 "
               >
                 MLSC
               </p>
 
-              <p className="mt-0.5 text-[11px] leading-tight text-white/40">
+              <p
+                className="
+                  mt-0.5
+                  text-[9px]
+                  leading-tight
+                  text-white/40
+                  sm:text-[11px]
+                "
+              >
                 Siddhartha University
               </p>
             </div>
           </Link>
 
           {/* DESKTOP NAVIGATION */}
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-5 md:flex">
             {links.map((link) => {
               const active = isActive(link.href);
               const Icon = link.icon;
@@ -112,47 +126,28 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   className={`
-                    group relative
-                    flex items-center gap-2.5
-                    px-3.5 py-2.5
+                    flex items-center gap-2
                     text-[13px] font-medium
                     tracking-[-0.01em]
-                    transition-all duration-200
+                    transition-colors duration-200
                     ${
                       active
-                        ? "text-[#59C4F7]"
-                        : "text-white/60 hover:text-white"
+                        ? "text-blue-500"
+                        : "text-white/55 hover:text-white"
                     }
                   `}
                 >
                   <Icon
                     size={16}
                     strokeWidth={1.7}
-                    className={`
-                      transition-transform duration-200
-                      ${
-                        active
-                          ? "text-[#59C4F7]"
-                          : "text-white/45 group-hover:text-white/75"
-                      }
-                    `}
+                    className={
+                    active
+                      ? "bg-[#0D1D30] text-blue-500"
+                      : "text-white/55 hover:text-white"
+                    }
                   />
 
                   <span>{link.name}</span>
-
-                  {/* ACTIVE INDICATOR */}
-                  <span
-                    className={`
-                      absolute bottom-0.5 left-3 right-3
-                      h-px bg-[#59C4F7]
-                      transition-transform duration-300
-                      ${
-                        active
-                          ? "scale-x-100"
-                          : "scale-x-0 group-hover:scale-x-100"
-                      }
-                    `}
-                  />
                 </Link>
               );
             })}
@@ -163,12 +158,13 @@ export default function Navbar() {
             onClick={() => setOpen(!open)}
             className="
               flex h-10 w-10
+              shrink-0
               items-center justify-center
+              rounded-lg
               border border-white/[0.12]
               text-white/70
-              transition-all duration-200
-              hover:border-[#59C4F7]/40
-              hover:text-[#59C4F7]
+              transition-colors duration-200
+              hover:text-white
               md:hidden
             "
             aria-label="Toggle menu"
@@ -211,7 +207,7 @@ export default function Navbar() {
             <motion.div
               initial={{
                 opacity: 0,
-                y: -10,
+                y: -8,
               }}
               animate={{
                 opacity: 1,
@@ -219,15 +215,16 @@ export default function Navbar() {
               }}
               exit={{
                 opacity: 0,
-                y: -10,
+                y: -8,
               }}
               transition={{
-                duration: 0.22,
+                duration: 0.2,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
                 mt-2
                 overflow-hidden
+                rounded-xl
                 border border-white/[0.10]
                 bg-[#081321]/96
                 p-2
@@ -251,8 +248,8 @@ export default function Navbar() {
                       transition-colors duration-200
                       ${
                         active
-                          ? "bg-[#59C4F7]/[0.09] text-[#59C4F7]"
-                          : "text-white/60 hover:bg-white/[0.04] hover:text-white"
+                          ? "text-[#59C4F7]"
+                          : "text-white/60 hover:text-white"
                       }
                     `}
                   >
@@ -266,7 +263,7 @@ export default function Navbar() {
                       }
                     />
 
-                    {link.name}
+                    <span>{link.name}</span>
                   </Link>
                 );
               })}
